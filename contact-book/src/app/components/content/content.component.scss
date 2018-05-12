@@ -1,0 +1,14 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+.main-content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100vh;
+	padding: 72px 0 0 $sidebarWidth;
+	background: $mainContentBgClr;
+
+	@media ($mdDevice) {
+		padding: 56px 0 0 0;
+	}
+}

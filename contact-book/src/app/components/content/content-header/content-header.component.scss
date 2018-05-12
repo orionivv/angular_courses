@@ -1,0 +1,43 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+.main-content {
+	&__header {
+		position: fixed;
+		top: 0;
+		left: $sidebarWidth;
+		right: 0;
+		z-index: 10;
+		display: flex;
+		justify-content: space-between;
+		padding: $indM $indXL;
+		background: $mainContentBgClr;
+		transition: position $mainTransition;
+		box-shadow: 0 0 10px 0 rgba(48, 54, 80, .2);
+
+		@media ($lgDevice) {
+			padding: $indM $indM;
+		}
+
+		@media ($mdDevice) {
+			left: 0;
+			padding: $indS $indM;
+		}
+
+		.mobile-menu {
+			@include mobileBtn($mainContentTextClr, $secondContentTextClr);
+		}
+
+		&-text {
+			@include truncate(100%);
+			margin: 0 $indS;
+			font-size: 24px;
+			line-height: 1;
+			font-weight: 500;
+			color: $secondContentTextClr;
+		}
+
+		&-menu {
+			@include dotsMenu($mainContentTextClr, $secondContentTextClr);
+		}
+	}
+}

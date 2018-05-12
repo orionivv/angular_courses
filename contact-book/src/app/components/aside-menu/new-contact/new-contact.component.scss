@@ -1,0 +1,30 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+.create-contact {
+	border-top: 1px solid fade-out($sidebarTextClr, .5);
+	
+	&__button {
+		display: flex;
+		align-items: center;
+		padding: $indXS $indM $indXS 0;
+		font-size: $fontM;
+		color: $sidebarTextClr;
+
+		&:hover,
+		&:focus {
+			.create-contact__text {
+				border-bottom-color: $sidebarTextClr;
+			}
+		}
+	}
+
+	&__icon {
+		@include plusIcon;
+		margin-right: $indS;
+	}
+
+	&__text {
+		border-bottom: 1px solid transparent;
+		transition: border $mainTransition;
+	}
+}

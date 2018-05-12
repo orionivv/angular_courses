@@ -1,0 +1,61 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	width: $sidebarWidth;
+	padding: $indM 0 0;
+	transition: transform $mainTransition;
+	background: linear-gradient(to bottom, $sidebarBgClr, lighten($sidebarBgClr, 20%));
+
+	@media ($mdDevice) {
+		padding-top: $indS;
+		transform: translateX(-100%);
+
+		&--active {
+			transform: translateX(0);
+		}
+	}
+
+	&__title {
+		flex-shrink: 0;
+		margin: 0;
+		font-size: $fontL;
+		line-height: 1;
+		font-weight: 500;
+		color: $sidebarTextClr;
+		text-align: center;
+
+		@media ($mdDevice) {
+			display: none;
+		}
+	}
+
+	.mobile-menu {
+		@include mobileBtn(fade-out($sidebarTextClr, .5), $sidebarTextClr);
+		margin-left: $indM;
+	}
+}
+
+search-contact {
+	flex-shrink: 0;
+	padding: 0 $indM;
+	margin-top: $indM;
+}
+side-menu {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	padding: 0;
+	margin: $indM 0 0;
+}
+new-contact {
+	flex-shrink: 0;
+	margin: $indM $indM 0;
+}

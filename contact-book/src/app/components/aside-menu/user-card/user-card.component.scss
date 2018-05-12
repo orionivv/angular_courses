@@ -1,0 +1,135 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+.user {
+	@include userCard;
+	flex-shrink: 0;
+	padding: 0 $indM;
+	margin-top: $indM;
+
+	@media ($mdDevice) {
+		margin-top: $indS;
+	}
+
+	&__name {
+		color: $sidebarTextClr;
+	}
+
+	&__log-out {
+		font-size: $fontXS;
+		color: fade-out($sidebarTextClr, .5);
+		transition: color $mainTransition;
+
+		&:hover,
+		&:focus {
+			color: $sidebarTextClr;
+		}
+	}
+
+	&__menu {
+		@include dotsMenu(fade-out($sidebarTextClr, .5), $sidebarTextClr);
+	}
+}
+
+
+.contacts {
+	display: flex;
+	flex-wrap: wrap;
+	margin: $indM $indXL;
+
+	@media ($lgDevice) {
+		margin: $indS $indM;
+	}
+}
+.contact-card {
+	@include userCard;
+	@include contactCardColumn(5);
+	margin: 0 $indM $indM 0;
+
+	@media (min-width: 1601px) {
+		&:nth-child(5n) {
+			margin-right: 0;
+		}
+	}
+
+	@media (max-width: 1600px) and (min-width: 1201px) {
+		@include contactCardColumn(4);
+		&:nth-child(4n) {
+			margin-right: 0;
+		}
+	}
+
+	@media (max-width: 1200px) and (min-width: 1025px)  {
+		@include contactCardColumn(3);
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+	}
+
+	@media ($lgDevice) {
+		margin-right: $indS;
+	}
+
+	@media ($lgDevice) and (min-width: 768px) {
+		@include contactCardColumn(2);
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+	}
+
+	@media (max-width: 767px) and (min-width: 701px) {
+		@include contactCardColumn(3);
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+	}
+
+	@media (max-width: 700px) and (min-width: 451px) {
+		@include contactCardColumn(2);
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+	}
+
+	@media (max-width: 450px) {
+		@include contactCardColumn(1);
+		margin-right: 0;
+	}
+
+	&__btn {
+		display: flex;
+		align-items: center;
+		width: 100%;
+
+		&:hover,
+		&:focus {
+			.contact-card__avatar {
+				border-color: $cardHoverClr;
+			}
+
+			.contact-card__name,
+			.contact-card__menu {
+				color: $cardHoverClr;
+			}
+		}
+	}
+
+	&__avatar {
+		transition: border $mainTransition;
+	}
+
+	&__name {
+		font-size: 16px;
+		color: $cardMainTextClr;
+		transition: color $mainTransition;
+	}
+
+	&__description {
+		@include truncate(100%);
+		font-size: 12px;
+		color: $cardSecondTextClr;
+	}
+
+	&__menu {
+		@include dotsMenu($cardSecondTextClr, $cardHoverClr);
+	}
+}

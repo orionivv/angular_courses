@@ -1,0 +1,50 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+.search {
+	position: relative;
+
+	&__input {
+		width: 100%;
+		height: $indL;
+		padding-right: $indL;
+		border-bottom: 1px solid fade-out($searchTextClr, .5);
+		transition: border-color $mainTransition;
+
+		&:focus {
+			border-bottom-color: $searchTextClr;
+			color: $searchTextClr;
+		}
+
+		&::placeholder {
+			color: fade-out($searchTextClr, .5);
+		}
+	}
+
+	&__button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		width: $indL;
+		height: $indL;
+		cursor: pointer;
+		color: fade-out($searchTextClr, .5);
+		outline: 0;
+
+		&:hover,
+		&:focus {
+			color: $searchTextClr;
+		}
+
+		svg {
+			width: $indS;
+			height: $indS;
+		}
+
+		path {
+			transition: $mainTransition;
+		}
+	}
+}
