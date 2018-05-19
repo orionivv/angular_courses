@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd } from '@angular/router/src/events';
-import { Router } from '@angular/router/src/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'content-header',
@@ -9,11 +8,22 @@ import { Router } from '@angular/router/src/router';
 })
 export class ContentHeaderComponent implements OnInit {
 	
-	title = "Contact Book";
+	title: string;
 
   constructor(public router: Router) {
-		router.events.subscribe((val) => {
-			console.log(val instanceof NavigationEnd);
+		router.events.subscribe(val => {
+			if (val instanceof NavigationEnd) {
+				if (val.url.length === 1) {
+					this.title = 'Contact Book'
+				}
+				else if (val.url.indexOf('user')!=-1) {
+					this.title = 'User'
+				}
+				else if (val.url.indexOf('new')!=-1) {
+					this.title = 'Add user'
+				}
+				else return
+			}
 		})
 	}
 
