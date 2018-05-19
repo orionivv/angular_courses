@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { NavigationEnd } from '@angular/router/src/events';
-// import { Router } from '@angular/router/src/router';
+import { NavigationEnd } from '@angular/router/src/events';
+import { Router } from '@angular/router/src/router';
 
 @Component({
   selector: 'content-header',
@@ -9,19 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentHeaderComponent implements OnInit {
 	
-	title: string;
+	title = "Contact Book";
 
-  // constructor(public router: Router) {
-	// 	router.events.subscribe((val) => {
-	// 		console.log(val instanceof NavigationEnd);
-	// 	})
-	// }
-	constructor () {
-
+  constructor(public router: Router) {
+		router.events.subscribe((val) => {
+			console.log(val instanceof NavigationEnd);
+		})
 	}
 
   ngOnInit() {
-		this.title = "Contact Book"
   }
 
 }
