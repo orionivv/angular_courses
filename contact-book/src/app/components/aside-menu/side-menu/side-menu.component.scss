@@ -23,7 +23,7 @@
 		text-transform: uppercase;
 		letter-spacing: 1.5px;
 		text-align: left;
-		transition: color $mainTransition;
+		transition: color $transDuration;
 		color: fade-out($sideMenuTextClr, .5);
 
 		&:hover,
@@ -66,10 +66,10 @@
 			right: 0;
 			bottom: 0;
 			left: 0;
-			border-left: 3px solid $sideMenuHoverColor;
+			border-left: 3px solid $sideMenuHoverClr;
 			opacity: 0;
 			background: linear-gradient(to right, rgba(127, 142, 218, .2), transparent);
-			transition: $mainTransition;
+			transition: $transDuration;
 		}
 
 		&:hover,
@@ -93,7 +93,7 @@
 		padding: 0 $indM;
 		font-size: 16px;
 		text-align: left;
-		transition: color $mainTransition;
+		transition: color $transDuration;
 		color: fade-out($sideMenuTextClr, .5);
 
 		&:hover,

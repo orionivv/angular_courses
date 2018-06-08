@@ -6,14 +6,19 @@ import { Component, OnInit, Input } from '@angular/core';
 	styleUrls: ['./user-card.component.scss']
 })
 export class UserCardComponent implements OnInit {
+	showMenu = false;
 
 	@Input() inAside: boolean;
-	@Input('users') contacts: [object];
 	@Input('user') user: object;
 
-  constructor() { }
+  constructor() { 
+	}
 
   ngOnInit() {
-  }
+	}
+	
+	toggleMenu() {
+		this.showMenu = !this.showMenu
+	}
 
 }

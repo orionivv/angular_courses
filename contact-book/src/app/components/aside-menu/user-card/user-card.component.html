@@ -1,5 +1,5 @@
-<div class="contacts" *ngIf='contacts'>
-	<div class="contact-card" *ngFor="let user of contacts" routerLink="user" [queryParams]="user">
+
+	<div class="contact-card">
 		<button class="contact-card__btn">
 			<div class="contact-card__avatar"></div>
 			<div class="contact-card__info">
@@ -7,15 +7,27 @@
 				<span class="contact-card__description">Some text</span>
 			</div>
 		</button>
-		<button class="contact-card__menu">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612">
+		
+		<button class="contact-card__menu-btn">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" (click)="toggleMenu()">
 				<path fill="currentColor" d="M55.636 250.364C24.907 250.364 0 275.27 0 306c0 30.73 24.907 55.636 55.636 55.636S111.273 336.73 111.273 306c0-30.73-24.907-55.636-55.637-55.636zm259.637 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.907 55.636 55.636 55.636 30.729 0 55.636-24.905 55.636-55.636 0-30.73-24.906-55.636-55.636-55.636zm241.091 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.906 55.636 55.636 55.636C587.093 361.636 612 336.73 612 306c0-30.73-24.907-55.636-55.636-55.636z"/>
 			</svg>
 		</button>
+
+		<div	class="contact-card__menu-bg" 
+					*ngIf="showMenu"
+					(click)="toggleMenu()">
+		</div>
+
+		<div	class="contact-card__menu" 
+					*ngIf="showMenu">
+			<button class="contact-card__menu-item">Edit</button>
+			<button class="contact-card__menu-item">Delete</button>
+			<button class="contact-card__menu-item">Add to groupe</button>
+		</div>
 	</div>
-</div>
 <!-- inAside component -->
-<section class="user" *ngIf='user'>
+<section class="user" *ngIf="false" >
 	<div class="user__avatar"></div>
 
 	<section class="user__info" >

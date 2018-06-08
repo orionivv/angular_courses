@@ -13,16 +13,15 @@ export class ContentHeaderComponent implements OnInit {
   constructor(public router: Router) {
 		router.events.subscribe(val => {
 			if (val instanceof NavigationEnd) {
-				if (val.url.length === 1) {
-					this.title = 'Contact Book'
-				}
-				else if (val.url.indexOf('user')!=-1) {
-					this.title = 'User'
+				if (val.url.indexOf('user')!=-1) {
+					this.title = 'Person'
 				}
 				else if (val.url.indexOf('new')!=-1) {
-					this.title = 'Add user'
+					this.title = 'New Contact'
 				}
-				else return
+				else {
+					this.title = 'Contact Book'
+				}
 			}
 		})
 	}

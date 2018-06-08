@@ -8,7 +8,7 @@
 		height: $indL;
 		padding-right: $indL;
 		border-bottom: 1px solid fade-out($searchTextClr, .5);
-		transition: border-color $mainTransition;
+		transition: border-color $transDuration;
 
 		&:focus {
 			border-bottom-color: $searchTextClr;
@@ -44,7 +44,7 @@
 		}
 
 		path {
-			transition: $mainTransition;
+			transition: $transDuration;
 		}
 	}
 }

@@ -25,6 +25,7 @@
 
 	&__text {
 		border-bottom: 1px solid transparent;
-		transition: border $mainTransition;
+		// transition: border $transDuration;
+		transition: border 	$transDuration;
 	}
 }

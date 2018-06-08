@@ -11,7 +11,7 @@
 	flex-shrink: 0;
 	width: $sidebarWidth;
 	padding: $indM 0 0;
-	transition: transform $mainTransition;
+	transition: transform $transDuration;
 	background: linear-gradient(to bottom, $sidebarBgClr, lighten($sidebarBgClr, 20%));
 
 	@media ($mdDevice) {
@@ -31,6 +31,7 @@
 		font-weight: 500;
 		color: $sidebarTextClr;
 		text-align: center;
+		cursor: pointer;
 
 		@media ($mdDevice) {
 			display: none;

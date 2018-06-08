@@ -1,10 +1,64 @@
+// Mobile button
+@mixin mobileBtn($color, $hoverColor) {
+	display: none;
+
+	@media ($mdDevice) {
+		display: flex;
+		flex-shrink: 0;
+		width: $indM;
+		height: $indM;
+		transition: color $transDuration;
+		color: $color;
+		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			color: $hoverColor;
+		}
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+// User card
+@mixin userCard {
+	display: flex;
+
+	&__avatar {
+		flex-shrink: 0;
+		width: $indXL;
+		height: $indXL;
+		border: 1px solid red;
+		border-radius: 50%;
+		background: center/100% no-repeat;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		flex-grow: 1;
+		align-items: flex-start;
+		margin: 0 $indXS 0 $indS;
+		overflow: hidden;
+	}
+
+	&__name {
+		@include truncate(100%);
+	}
+}
+
+// Dots menu
 @mixin dotsMenu($color, $hoverColor) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: $indL;
+	width: $indM;
 	color: $color;
-	transition: color $mainTransition;
+	transition: color $transDuration;
 
 	&:hover,
 	&:focus {
@@ -16,86 +70,74 @@
 	}
 }
 
-@mixin truncate($max-width) {
+// Truncate
+@mixin truncate($max-width: 100%) {
 	max-width: $max-width;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 }
 
-@mixin userCard {
+// Plus icon
+@mixin plusIcon($rotate: false) {
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: $indM;
+	height: $indM;
+	border-radius: 50%;
+	background: $clrLightBlue;
+	color: $clrWhite;
 
-	&__avatar {
-		flex-shrink: 0;
-		width: $indXL;
-		height: $indXL;
-		border: 1px solid $sidebarTextClr;
-		border-radius: 50%;
-		background: center/100% no-repeat;
-		background-image: url(https://upload.wikimedia.org/wikipedia/ru/thumb/9/95/Warhol-Campbell_Soup-1-screenprint-1968.jpg/150px-Warhol-Campbell_Soup-1-screenprint-1968.jpg);
-	}
+	svg {
+		width: $indS;
+		height: $indS;
 
-	&__info {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		flex-grow: 1;
-		align-items: flex-start;
-		margin-left: $indS;
-		overflow: hidden;
-	}
-
-	&__name {
-		@include truncate(100%);
-		white-space: nowrap;
-	}
-}
-
-@mixin mobileBtn($color, $hoverColor) {
-	display: none;
-
-	@media (max-width: 767px) {
-		display: flex;
-		transition: color $mainTransition;
-		color: $color;
-		cursor: pointer;
-
-		&:hover,
-		&:focus {
-			color: $hoverColor;
-		}
-
-		svg {
-			width: $indM;
-			height: $indM;
+		@if $rotate {
+			transform: rotate($rotate);
 		}
 	}
 }
 
+// Contacts tile columns
 @mixin contactCardColumn($count) {
-	width: calc((100% + #{$indM}) / #{$count} - #{$indM});
-	max-width: calc((100% + #{$indM}) / #{$count} - #{$indM});
+	--columnWidth: calc((100% + #{$indM}) / #{$count} - #{$indM});
 
-	@media (max-width: 1024px) {
-		width: calc((100% + #{$indS}) / #{$count} - #{$indS});
-		max-width: calc((100% + #{$indS}) / #{$count} - #{$indS});
+	@media ($lgDevice) {
+		--columnWidth: calc((100% + #{$indS}) / #{$count} - #{$indS});
+	}
+
+	width:  var(--columnWidth);
+	max-width:  var(--columnWidth);
+}
+
+// Form label
+@mixin labelColumn {
+	flex-direction: column;
+	align-items: flex-start;
+
+	.contact-form__label-text {
+		line-height: 1;
+		text-align: left;
+		margin-bottom: $indXS;
 	}
 }
 
+// Form input
 @mixin formInputStyle($size: 1) {
+	--boxShadowColor: #{fade-out($clrGrey, .5)};
 	width: 100% / $size;
-	--box-shadow-color: rgba(48, 54, 80, .2);
-	border: 1px solid #999999;
-	box-shadow: inset 0 0 10px 0 var(--box-shadow-color);
-	transition: $mainTransition;
+	border: 1px solid $clrGrey;
+	box-shadow: inset 0 0 10px 0 var(--boxShadowColor);
+	transition: box-shadow $transDuration;
 
 	&:focus {
-		--box-shadow-color: rgba(16, 177, 223, 1);
-		border-color: rgba(16, 177, 223, 1);
+		--boxShadowColor: #{$clrLightBlue};
+		border-color: $clrLightBlue;
 	}
 }
 
+// Form button
 @mixin formButtonStyle($bgColor, $color, $border: false) {
 	border: 1px solid transparent;
 	background: $bgColor;
@@ -112,32 +154,5 @@
 		@if $border == false {
 			border-color: $bgColor;
 		}
-	}
-}
-
-@mixin labelColumn {
-	flex-direction: column;
-	align-items: flex-start;
-
-	.contact-form__label-text {
-		line-height: 1;
-		text-align: left;
-		margin-bottom: $indXS;
-	}
-}
-
-@mixin plusIcon {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: $indM;
-	height: $indM;
-	border-radius: 50%;
-	background: #10B1DF;
-	color: $clrWhite;
-
-	svg {
-		width: $indS;
-		height: $indS;
 	}
 }

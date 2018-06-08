@@ -4,37 +4,28 @@
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
-	width: 100%;
-	padding: $indM $indXL;
+	margin: $indM $indXL;
 
 	@media ($lgDevice) {
-		padding: $indS $indM $indM $indS;
+		margin: $indM;
 	}
 
-	&__wrapper {
-		display: flex;
-		justify-content: flex-end;
-		margin-bottom: $indS;
+	@media ($smDevice) {
+		margin: $indS;
 	}
 
 	&__close-button {
-		@include plusIcon;
-		transform: rotate(45deg);
+		@include plusIcon(45deg);
+		align-self: flex-end;
 	}
 
 	&__fields-box {
 		flex-grow: 1;
-		padding-bottom: $indM;
 	}
 
 	&__main-info {
 		display: flex;
-		width: 100%;
 		margin-bottom: $indM;
-
-		.contact-form__label {
-			@include labelColumn;
-		}
 
 		@media ($mdDevice) {
 			flex-direction: column;
@@ -42,7 +33,7 @@
 		}
 	}
 
-	&__fields-wrapper {
+	&__main-info-wrapper {
 		display: flex;
 		flex-wrap: wrap;
 		align-content: flex-start;
@@ -55,7 +46,8 @@
 		margin-bottom: $indM;
 
 		@media ($mdDevice) {
-			@include labelColumn;
+			flex-direction: column;
+			align-items: flex-start;
 		}
 
 		&--file {
@@ -64,11 +56,23 @@
 			height: 150px;
 			border-radius: 50%;
 			margin-right: $indS;
+			border: 1px solid $formAvatarBorderClr;
 			background: url(../../../../assets/icon/file.png);
 			background-size: 100%;
+			transition: border $transDuration;
+			cursor: pointer;
 
 			@media (min-resolution: 1.5dppx) {
 				background-image: url(../../../../assets/icon/file@2x.png);
+			}
+
+			@media ($mdDevice) {
+				margin-right: 0;
+			}
+
+			&:hover,
+			&:focus {
+				border-color: $formMainClr;
 			}
 
 			input {
@@ -83,12 +87,10 @@
 				width: 100%;
 			}
 
-			@media (max-width: 450px) {
+			@media ($smDevice) {
 				width: 100%;
 			}
 
-
-			
 			&:first-child {
 				margin-right: $indS;
 
@@ -96,30 +98,50 @@
 					margin-right: 0;
 				}
 
-				@media (max-width: 450px) {
+				@media ($smDevice) {
 					margin-right: 0;
 				}
 			}
 		}
 
+		.contact-form__main-info & {
+			flex-direction: column;
+			align-items: flex-start;
+		}
 	}
 
 	&__label-text {
 		flex-shrink: 0;
 		width: 150px + $indS;
 		padding-right: $indS;
+		font-weight: 600;
 		text-align: right;
 		line-height: 2;
+
+		@media ($mdDevice) {
+			line-height: 1;
+			text-align: left;
+			margin-bottom: $indXS;
+		}
+
+		.contact-form__main-info & {
+			line-height: 1;
+			text-align: left;
+			margin-bottom: $indXS;
+		}
+	}
+	
+	&__input,
+	&__textarea {
+		@include formInputStyle;
 	}
 
 	&__input {
-		@include formInputStyle;
 		height: $indL;
 		padding: 0 $indS;
 	}
 
 	&__textarea {
-		@include formInputStyle;
 		padding: $indXS $indS;
 		line-height: 1.5;
 	}
@@ -129,7 +151,7 @@
 		justify-content: flex-end;
 		align-items: center;
 
-		@media (max-width: 450px) {
+		@media ($smDevice) {
 			flex-direction: column;
 		}
 
@@ -139,7 +161,7 @@
 			height: 1px;
 			background: grey;
 
-			@media (max-width: 450px) {
+			@media ($smDevice) {
 				display: none;
 			}
 		}
@@ -147,13 +169,13 @@
 
 	&__button {
 		min-width: 140px;
-		height: 34px;
-		border-radius: 17px;
-		font-size: 16px;
-		transition: $mainTransition;
+		height: $indL;
+		border-radius: $indL / 2;
+		font-size: $fontM;
+		transition: $transDuration;
 		margin-left: $indM;
 
-		@media (max-width: 450px) {
+		@media ($smDevice) {
 			width: 100%;
 			margin-left: 0;
 

@@ -1,0 +1,15 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+.contacts {
+	display: flex;
+	flex-wrap: wrap;
+	margin: $indM $indXL;
+
+	@media ($lgDevice) {
+		margin: $indM;
+	}
+
+	@media ($smDevice) {
+		margin: $indS;
+	}
+}

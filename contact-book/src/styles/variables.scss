@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-$mainTransition: .5s;
+// Transition
+$transDuration: .3s;
 
 // Colors
 $clrWhite: rgba(255, 255, 255, 1);
 $clrBlack: rgba(0, 0, 0, 1);
 $clrGrey: rgba(122, 126, 129, 1);
 $clrLightBlue: rgba(16, 177, 223, 1);
+$clrDarkBlue: rgba(36, 40, 62, 1);
 
 // Sidebar
 $sidebarWidth: 320px;
-$sidebarBgClr: rgba(36, 40, 62, 1);
+$sidebarBgClr: $clrDarkBlue;
 $sidebarTextClr: $clrWhite;
 
 // Search
@@ -18,7 +20,7 @@ $searchTextClr: $clrWhite;
 
 // Side menu
 $sideMenuTextClr: $clrWhite;
-$sideMenuHoverColor: $clrLightBlue;
+$sideMenuHoverClr: $clrLightBlue;
 $sideMenuBtnClr: #8992CA;
 
 // Main content
@@ -34,6 +36,7 @@ $cardHoverClr: $clrLightBlue;
 // Contact form
 $formMainClr: $clrLightBlue;
 $formSecondClr: $clrWhite;
+$formAvatarBorderClr: $clrGrey;
 
 // Grid
 $indentStep: 8px;
@@ -50,5 +53,6 @@ $fontM: $indentStep * 2;
 $fontL: $indentStep * 3;
 
 // Media
+$smDevice: 'max-width: 450px';
 $mdDevice: 'max-width: 767px';
 $lgDevice: 'max-width: 1024px';
