@@ -8,13 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserCardComponent implements OnInit {
 	showMenu = false;
 
-	@Input() inAside: boolean;
+	@Input() isAdmin: boolean;
 	@Input('user') user: object;
 
   constructor() { 
 	}
 
   ngOnInit() {
+		
 	}
 	
 	toggleMenu() {

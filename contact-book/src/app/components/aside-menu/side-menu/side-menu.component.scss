@@ -39,7 +39,7 @@
 	flex-direction: column;
 	flex-grow: 1;
 	overflow: scroll;
-	// display: none;
+	overflow: auto;
 
 	.side-menu__item--active & {
 		display: flex;
